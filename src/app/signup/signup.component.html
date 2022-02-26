@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <h3>Registeration Form</h3>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" >
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="firstName">First name</label>
+            <input type="text" formControlName="firstName" class="form-control" [ngClass]="{'is-invalid': submitted && form['firstName'].errors}" />
+            <div *ngIf="submitted && form['firstName'].errors" class="invalid-feedback">
+                <div *ngIf="form['firstName'].errors['required']">
+                    This value is required
+                </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="lastName">Last name</label>
+            <input type="text" formControlName="lastName" class="form-control" [ngClass]="{'is-invalid': submitted && form['lastName'].errors}" />
+            <div *ngIf="submitted && form['lastName'].errors" class="invalid-feedback">
+                <div *ngIf="form['lastName'].errors['required']">
+                    This value is required
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="email">Email</label>
+        <input type="email" formControlName="email" class="form-control" [ngClass]="{'is-invalid': submitted && form['email'].errors}" />
+        <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
+            <div *ngIf="form['email'].errors['required']">
+                This value is required
+            </div>
+            <div *ngIf="form['email'].errors['email']">
+                Invalid email id field
+            </div>
+        </div>
+      </div>
+  
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{'is-invalid': submitted && form['password'].errors}" />
+        <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
+            <div *ngIf="form['password'].errors['required']">
+                This value is required
+            </div>
+            <div *ngIf="form['password'].errors['minlength']">
+                Password must be 8 chachters long.
+            </div>
+        </div>
+      </div>
+  
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+  
+    </form>
+</div>
